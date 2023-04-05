@@ -10,6 +10,7 @@ function custom_add_trisbee_payment_button( $order_id ) {
         // Get the order total amount and order number
         $order_price = $order->get_total();
         $order_number = $order->get_order_number();
+        $return_url = urlencode( wc_get_endpoint_url( 'order-received', $order->get_id(), wc_get_page_permalink( 'checkout' ) ) );
 
         // Show the payment button
         echo '<a href="https://pay.trisbee.com/VLASTNI-USERNAME/' . $order_price . '/' . $order_number . '" class="trisbee-payment-button">Zaplatit kartou</a>';
@@ -27,6 +28,7 @@ function custom_add_trisbee_payment_button_to_email( $order, $sent_to_admin, $pl
             // Get the order total amount and order number
             $order_price = $order->get_total();
             $order_number = $order->get_order_number();
+            $return_url = urlencode( wc_get_endpoint_url( 'order-received', $order->get_id(), wc_get_page_permalink( 'checkout' ) ) );
 
             // Show the payment button
             echo '<p><a href="https://pay.trisbee.com/VLASTNI-USERNAME/' . $order_price . '/' . $order_number . '" class="trisbee-payment-button">Zaplatit kartou</a></p>';
@@ -42,6 +44,7 @@ function custom_add_trisbee_payment_button_to_my_account_order( $order ) {
         // Get the order total amount and order number
         $order_price = $order->get_total();
         $order_number = $order->get_order_number();
+        $return_url = urlencode( wc_get_endpoint_url( 'order-received', $order->get_id(), wc_get_page_permalink( 'checkout' ) ) );
 
         // Show the payment button
         echo '<p><a href="https://pay.trisbee.com/VLASTNI-USERNAME/' . $order_price . '/' . $order_number . '" class="trisbee-payment-button">Zaplatit kartou</a></p>';
